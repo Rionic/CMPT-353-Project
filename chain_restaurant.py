@@ -2,7 +2,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-df = pd.read_csv('Data/all_reviews_cleaned.csv')
+df = pd.read_csv('Data/all_reviews_cleaned.csv', index_col=[0])
 
 # filter: Subset the dataframe rows or columns according to the specified index labels.
 count_name = df.filter(['name'])
@@ -21,8 +21,7 @@ plt.hist(count_name['count'], bins=10)
 
 join = pd.merge(df, count_name, on = 'name')
 join = join.sort_values(by=['count'], ascending = False)
-join = join.drop(columns = 'Unnamed: 0')
 print(join)
 
-df.to_csv('Data/chain_restaurant.csv')
+df.to_csv('Data/chain_restaurant.csv', index = False)
 
