@@ -23,5 +23,5 @@ join = pd.merge(df, count_name, on = 'name')
 join = join.sort_values(by=['count'], ascending = False)
 print(join)
 
-# df.to_csv('chain_restaurant.csv')
+df.to_csv('Data/chain_restaurant.csv')
 
