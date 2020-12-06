@@ -21,6 +21,7 @@ plt.hist(count_name['count'], bins=10)
 
 join = pd.merge(df, count_name, on = 'name')
 join = join.sort_values(by=['count'], ascending = False)
+join = join.drop(columns = 'Unnamed: 0')
 print(join)
 
 df.to_csv('Data/chain_restaurant.csv')
