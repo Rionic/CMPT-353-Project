@@ -14,24 +14,22 @@ df = df[df['user_id'] != '#NAME?']
 # Include users who have at least 100 reviews
 df = df[df['user_review_count'] >= 100]
 
-non = df[df['elite'].isnull()] #15663
-elite = df[df['elite'].notnull()] #88568
+non = df[df['elite'].isnull()]
+elite = df[df['elite'].notnull()]
 
 group_non = non.drop(columns=['review_stars', 'date', 'user_review_count', 'elite'])
 group_elite = elite.drop(columns=['review_stars', 'date', 'user_review_count', 'elite'])
 
 # count of people in each group
 group_non = group_non.groupby(group_non['user_id'], as_index=False).sum()
-# group_non #1745 people 
 group_elite = group_elite.groupby(group_elite['user_id'], as_index=False).sum()
-# group_elite #5399 people
 
 # New Sample will change the graph after each run
 sample_non = group_non.sample(1745)
 sample_elite = group_elite.sample(1745)
 
-non = non.merge(sample_non, on ='user_id') #15663 rows
-elite = elite.merge(sample_elite, on='user_id') #27330 rows
+non = non.merge(sample_non, on ='user_id')
+elite = elite.merge(sample_elite, on='user_id')
 
 # Sort by day of review for each user
 non = non.groupby(['user_id', 'date']).first().reset_index()
@@ -45,7 +43,7 @@ df['review_order'] = df.groupby(['user_id']).cumcount()+1
 
 # Average rating of each user by user review order
 avg = df.drop(columns=['user_id', 'date', 'user_review_count', 'elite'])
-avg = avg[avg['review_order'] <= 100] #33510: 50, 15190: 100
+avg = avg[avg['review_order'] <= 100]
 avg = avg.groupby(['review_order']).mean().reset_index()
 
 fit = stats.linregress(avg['review_order'], avg['review_stars'])
@@ -63,7 +61,7 @@ plt.show()
 
 # Average rating of each non-elite user by user review order
 non = non.drop(columns=['user_id', 'date', 'user_review_count', 'elite'])
-non = non[non['review_order'] <= 100] #33510: 50, 15190: 100
+non = non[non['review_order'] <= 100]
 non_elite = non.groupby(['review_order']).mean().reset_index()
 
 fit = stats.linregress(non_elite['review_order'], non_elite['review_stars'])
@@ -81,7 +79,7 @@ plt.show()
 
 # Average rating of each elite user by user review order
 elite = elite.drop(columns=['user_id', 'date', 'user_review_count', 'elite'])
-elite = elite[elite['review_order'] <= 100] #89074:50, 78684: 100
+elite = elite[elite['review_order'] <= 100]
 avg_elite = elite.groupby(['review_order']).mean().reset_index()
 
 fit = stats.linregress(avg_elite['review_order'], avg_elite['review_stars'])
