@@ -49,15 +49,16 @@ avg = avg.groupby(['review_order']).mean().reset_index()
 fit = stats.linregress(avg['review_order'], avg['review_stars'])
 avg['prediction'] = avg['review_order']*fit.slope + fit.intercept
 
-plt.plot(avg['review_order'], avg['review_stars'], 'b.', alpha=1.0)
-plt.plot(avg['review_order'], avg['prediction'], 'r-', linewidth=3)
-plt.legend(['Rating Observation', 'Best Fit Line'])
+plt.plot(avg['review_order'], avg['review_stars'], 'b.', alpha=1.0, label='Rating Observation')
+plt.plot(avg['review_order'], avg['prediction'], 'r-', linewidth=3, label ='Best Fit Line')
 plt.title('Average User Ratings vs Review Count')
 plt.xlabel('Count')
 plt.ylabel('Average Ratings')
 x1,x2,y1,y2 = plt.axis()
 plt.axis((x1,x2,3.2,4.0))
-plt.show()
+plt.legend(loc="lower left")
+plt.savefig('../4-figures/user_review_trend/user_rating.png')
+plt.clf()
 
 # Average rating of each non-elite user by user review order
 non = non.drop(columns=['user_id', 'date', 'user_review_count', 'elite'])
@@ -67,15 +68,17 @@ non_elite = non.groupby(['review_order']).mean().reset_index()
 fit = stats.linregress(non_elite['review_order'], non_elite['review_stars'])
 non_elite['prediction'] = non_elite['review_order']*fit.slope + fit.intercept
 
-plt.plot(non_elite['review_order'], non_elite['review_stars'], 'b.', alpha=1.0)
-plt.plot(non_elite['review_order'], non_elite['prediction'], 'r-', linewidth=3)
+plt.plot(non_elite['review_order'], non_elite['review_stars'], 'b.', alpha=1.0, label='Rating Observation')
+plt.plot(non_elite['review_order'], non_elite['prediction'], 'r-', linewidth=3, label ='Best Fit Line')
 plt.legend(['Rating Observation', 'Best Fit Line'])
 plt.title('Average Non Elite Ratings vs Review Count')
 plt.xlabel('Count')
 plt.ylabel('Average Ratings')
 x1,x2,y1,y2 = plt.axis()
 plt.axis((x1,x2,3.2,4.0))
-plt.show()
+plt.legend(loc="lower left")
+plt.savefig('../4-figures/user_review_trend/non_elite_rating.png')
+plt.clf()
 
 # Average rating of each elite user by user review order
 elite = elite.drop(columns=['user_id', 'date', 'user_review_count', 'elite'])
@@ -85,14 +88,15 @@ avg_elite = elite.groupby(['review_order']).mean().reset_index()
 fit = stats.linregress(avg_elite['review_order'], avg_elite['review_stars'])
 avg_elite['prediction'] = avg_elite['review_order']*fit.slope + fit.intercept
 
-plt.plot(avg_elite['review_order'], avg_elite['review_stars'], 'b.', alpha=1.0)
-plt.plot(avg_elite['review_order'], avg_elite['prediction'], 'r-', linewidth=3)
+plt.plot(avg_elite['review_order'], avg_elite['review_stars'], 'b.', alpha=1.0, label='Rating Observation')
+plt.plot(avg_elite['review_order'], avg_elite['prediction'], 'r-', linewidth=3, label ='Best Fit Line')
 plt.legend(['Rating Observation', 'Best Fit Line'])
 plt.title('Average Elite Ratings vs Review Count')
 plt.xlabel('Count')
 plt.ylabel('Average Ratings')
 x1,x2,y1,y2 = plt.axis()
 plt.axis((x1,x2,3.2,4.0))
-plt.show()
+plt.legend(loc="lower left")
+plt.savefig('../4-figures/user_review_trend/elite_rating.png')
 
 
