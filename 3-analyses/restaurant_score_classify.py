@@ -50,4 +50,4 @@ y = attr_df['successful']
 model = GaussianNB()
 X_train, X_valid, y_train, y_valid = train_test_split(X,y)
 model.fit(X_train, y_train)
-print(f'p-value: {model.score(X_valid, y_valid)}')
+print(f'classifier accuracy score: {model.score(X_valid, y_valid)}')
