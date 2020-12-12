@@ -6,7 +6,7 @@ from sklearn.naive_bayes import GaussianNB
 import json
 import ast
 
-df = pd.read_csv('2-cleaned_data/business_cleaned.csv')
+df = pd.read_csv('../2-cleaned_data/business_cleaned.csv')
 df = df[['business_id','name','stars','review_count','attributes','categories','hours']]
 
 df['attributes'] = df[~df['attributes'].isna()]['attributes'].apply(lambda x: eval(x)) #https://www.reddit.com/r/learnpython/comments/4599hl/module_to_guess_type_from_a_string/
