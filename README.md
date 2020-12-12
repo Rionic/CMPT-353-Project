@@ -38,7 +38,7 @@ Code Execution
         Command: python clean_business.py  
         Output: ../2-cleaned_data/business_clean.csv  
 
-    B) File: all_data_merge.py  
+    B) File: all_data_merge.py [will take a few minutes to run]
         Reads: ../0-raw_data/yelp_academic_dataset_review.json,  
         ../0-raw_data/yelp_academic_dataset_user.json,  
         ./2-cleaned_data/business_cleaned.csv  
