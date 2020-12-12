@@ -39,7 +39,8 @@ Code Execution
         Output: ../2-cleaned_data/business_clean.csv  
 
     B) File: all_data_merge.py  
-        Reads: ../0-raw_data/yelp_academic_dataset_review.json, ../0-raw_data/yelp_academic_dataset_user.json,  
+        Reads: ../0-raw_data/yelp_academic_dataset_review.json,  
+        ../0-raw_data/yelp_academic_dataset_user.json,  
         ./2-cleaned_data/business_cleaned.csv  
         Command: spark-submit all_data_merge.py  
         Output: business_reviews_users_merged.csv  
@@ -49,7 +50,8 @@ Code Execution
     A) File: restaurant_popularity.py  
         Reads: ../2-cleaned_data/business_reviews_users_merged.csv  
         Command: python restaurant_popularity.py  
-        Output: ../4-figures/restaurant_popularity/unadj_week.png, ../4-figures/restaurant_popularity/adj_week.png,  
+        Output: ../4-figures/restaurant_popularity/unadj_week.png,  
+        ../4-figures/restaurant_popularity/adj_week.png,  
         ../4-figures/restaurant_popularity/unadj_hol.png,  
         ../4-figures/restaurant_popularity/adj_hol.png,  
         statistics on command line
@@ -63,7 +65,9 @@ Code Execution
     C) File: user_review_trend.py  
         Reads: ../2-cleaned_data/business_reviews_users_merged.csv  
         Command: python user_review_trend.py  
-        Output: ../4-figures/user_review_trend/user_rating.png, ../4-figures/user_review_trend/non_elite_rating.png, ../4-figures/user_review_trend/elite_rating.png  
+        Output: ../4-figures/user_review_trend/user_rating.png,  
+        ../4-figures/user_review_trend/non_elite_rating.png,  
+        ../4-figures/user_review_trend/elite_rating.png  
 
     D) File: restaurant_score_classify.py  
         Reads: ../2-cleaned_data/business_cleaned.csv  
