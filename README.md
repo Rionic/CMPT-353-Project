@@ -3,17 +3,17 @@ This repository includes code to extract-transform-load records of Toronto resta
 Requirements [It is recommended to download the latest stable version of each software]
 
 Applications:
-    Python: https://www.python.org/
-    Spark: https://spark.apache.org/
+   * Python: https://www.python.org/
+   * Spark: https://spark.apache.org/
 
 Libraries:
-    Pandas: https://pandas.pydata.org/
-    NumPy: https://numpy.org/
-    Scipy: https://www.scipy.org/
-    Matplotlib: https://matplotlib.org/
-    Seaborn: https://seaborn.pydata.org/
-    Sklearn: https://scikit-learn.org/
-    Statsmodels: https://www.statsmodels.org/stable/index.html
+  *  Pandas: https://pandas.pydata.org/
+  *  NumPy: https://numpy.org/
+  *  Scipy: https://www.scipy.org/
+  *  Matplotlib: https://matplotlib.org/
+  *  Seaborn: https://seaborn.pydata.org/
+  *  Sklearn: https://scikit-learn.org/
+  *  Statsmodels: https://www.statsmodels.org/stable/index.html
 
 Dataset:
     The following link contains the download for the raw dataset: https://www.kaggle.com/yelp-dataset/yelp-dataset
