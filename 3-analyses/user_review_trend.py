@@ -20,17 +20,6 @@ elite = df[df['elite'].notnull()]
 group_non = non.drop(columns=['review_stars', 'date', 'user_review_count', 'elite'])
 group_elite = elite.drop(columns=['review_stars', 'date', 'user_review_count', 'elite'])
 
-# count of people in each group
-group_non = group_non.groupby(group_non['user_id'], as_index=False).sum()
-group_elite = group_elite.groupby(group_elite['user_id'], as_index=False).sum()
-
-# New Sample will change the graph after each run
-sample_non = group_non.sample(1745)
-sample_elite = group_elite.sample(1745)
-
-non = non.merge(sample_non, on ='user_id')
-elite = elite.merge(sample_elite, on='user_id')
-
 # Sort by day of review for each user
 non = non.groupby(['user_id', 'date']).first().reset_index()
 non['review_order'] = non.groupby(['user_id']).cumcount()+1
